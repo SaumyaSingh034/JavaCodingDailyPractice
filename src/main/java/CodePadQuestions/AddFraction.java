@@ -48,6 +48,7 @@ public class AddFraction {
                 System.out.println( "Test passed." );
             } else {
                 System.out.println( "Test failed." );
+                //new commit
             }
         }
     }
