@@ -19,18 +19,20 @@ public class Panagram {
         private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
         public String findMissingLetters(String sentence) {
-            String word = sentence.replaceAll(" ", "");
-            SortedSet<Character> unique = new TreeSet<>();
-            StringBuilder result = new StringBuilder();
-            for(char c : word.toLowerCase().toCharArray()){
-                if(unique.add(c)){
-                    result.append(c);
-                }
+            SortedSet<Character> missing = new TreeSet<>();
+            for(int i=0;i<ALPHABET.length();i++){
+                missing.add(ALPHABET.charAt(i));
             }
-            char[] ch = result.toString().toCharArray();
-            Arrays.sort(ch);
-            String sorted = new String(ch);
-            return sorted;
+            String s = sentence.toLowerCase();
+
+            for(int i=0;i<s.length();i++){
+                missing.remove(s.charAt(i));
+            }
+            StringBuilder sb = new StringBuilder();
+            for(Character c : missing){
+                sb.append(c.charValue());
+            }
+            return sb.toString();
         }
 
     }
